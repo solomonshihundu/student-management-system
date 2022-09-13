@@ -1,5 +1,6 @@
 package com.ss.studentmanagementsystem.controller;
 
+import com.ss.studentmanagementsystem.entity.Student;
 import com.ss.studentmanagementsystem.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,13 @@ public class StudentController {
     public String listStudents(Model model){
         model.addAttribute("students",studentService.getAllStudents());
         return "students";
+    }
+
+    @GetMapping("/students/new")
+    public String createStudentForm(Model model){
+        Student student = new Student();
+        model.addAttribute("student",student);
+        return "student";
     }
 
 }
